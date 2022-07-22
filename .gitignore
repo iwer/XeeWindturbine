@@ -2,3 +2,5 @@ Binaries/*
 Intermediate/*
 dist/*
 *.gch
+*.blend1
+
