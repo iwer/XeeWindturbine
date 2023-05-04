@@ -6,7 +6,6 @@
 #include "XeeWindturbineComponent.h"
 #include "Curves/CurveFloat.h" 
 #include "Components/TimelineComponent.h" 
-#include "XeeNoiseSynthComponent.h" 
 #include "WindturbineState.h"
 #include "MathUtils.h"
 

@@ -26,9 +26,7 @@ public class XeeWindturbine : ModuleRules
             new string[]
             {
                 "Core",
-                "Synthesis",
                 "AudioMixer",
-				"XeeUtilities"
                 // ... add other public dependencies that you statically link with here ...
             }
             );
@@ -41,7 +39,7 @@ public class XeeWindturbine : ModuleRules
                 "Engine",
                 "Slate",
                 "SlateCore",
-                "SignalProcessing",
+                "XeeUtilities"
                 // ... add private dependencies that you statically link with here ...	
             }
             );

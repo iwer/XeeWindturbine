@@ -78,18 +78,6 @@ void UXeeTurbineHouseComponent::UpdateAzimuth(const float NewAzimuth)
 void UXeeTurbineHouseComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
-	AzimuthSynth = NewObject<UModularSynthComponent>(this);
-	AzimuthSynth->SetRelativeLocation(FVector::ZeroVector);
-	AzimuthSynth->SetupAttachment(this);
-	AzimuthSynth->RegisterComponent();
-	AzimuthSynth->bAllowSpatialization = true;
-	AzimuthSynth->VoiceCount = 1;
-	if (AttenuationSettings)
-		AzimuthSynth->AttenuationSettings = AttenuationSettings;
-	if(SoundClass)
-		AzimuthSynth->SoundClass = SoundClass;
-
 	// ...
 	CreateAWLPointLights();
 
@@ -222,17 +210,6 @@ void UXeeTurbineHouseComponent::InitAzimuthCorrection(const float WindDirection,
 		AzimuthTimeline->SetPlayRate(1 / SecondsToTurn);
 		AzimuthTimeline->PlayFromStart();
 
-		if(AzimuthSynth)
-		{
-			AzimuthSynth->Activate();
-			AzimuthSynth->SetSynthPreset(AzimuthSynthPreset);
-			AzimuthSynth->AttenuationSettings = AttenuationSettings;
-			AzimuthSynth->SoundClass = SoundClass;
-			AzimuthSynth->NoteOn(32.0,100,-1);
-		} else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("UXeeTurbineHouseComponent::InitAzimuthCorrection: No Azimut Synth"))
-		}
 	} else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("UXeeTurbineHouseComponent::InitAzimuthCorrection: Direction diff inside tolerance"))
@@ -241,5 +218,4 @@ void UXeeTurbineHouseComponent::InitAzimuthCorrection(const float WindDirection,
 
 void UXeeTurbineHouseComponent::OnAzimuthCorrectionFinished() const
 {
-	AzimuthSynth->NoteOff(32.0,true, false);
 }

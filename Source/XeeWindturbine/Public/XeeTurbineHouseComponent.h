@@ -8,7 +8,6 @@
 #include "Components/TimelineComponent.h" 
 #include "Components/PointLightComponent.h"
 #include "WindturbineState.h"
-#include "SynthComponents/EpicSynth1Component.h"
 
 #include "XeeTurbineHouseComponent.generated.h"
 
@@ -38,9 +37,6 @@ public:
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Noise Synthesis")
 	USoundAttenuation * AttenuationSettings;
-	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Noise Synthesis")
-	FModularSynthPreset AzimuthSynthPreset;
 	
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Noise Synthesis")
 	USoundClass * SoundClass;
@@ -75,8 +71,6 @@ private:
 	float AWLState;
 	TEnumAsByte<EWindTurbineState> State;
 
-	UPROPERTY()
-	UModularSynthComponent * AzimuthSynth;
 	UPROPERTY()
 	UCurveFloat* BlinkCurve;
 	UPROPERTY()
